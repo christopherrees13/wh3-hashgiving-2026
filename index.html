@@ -262,9 +262,8 @@ form.addEventListener('submit', async e => {
       body:JSON.stringify(Object.fromEntries(fd.entries()))
     });
 
-    const [a,b] = await Promise.all([formSave, attendeeSave]);
-    if(!a.ok || !b.ok) throw new Error();
-
+  const b = await attendeeSave; 
+if (!b.ok) throw new Error();
     form.reset();
     form.querySelector('input[name="beer_mile"][value="spectating"]').checked = true;
     document.getElementById('beerMilers').value = '0';
