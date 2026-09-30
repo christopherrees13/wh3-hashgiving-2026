@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WH3 Hashgiving & Beer Mile Extravaganza</title>
+<meta name="description" content="WH3 Hashgiving & Beer Mile Extravaganza — Saturday, October 10, 2026 at 3:00 PM.">
+<style>
+:root{
+  --paper:#fff5df; --ink:#18323c; --red:#d51d10; --red2:#a9150e;
+  --line:#d8c3a4; --dark:#17120f; --green:#345f43;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--dark);
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+}
+.page{max-width:1536px;margin:0 auto;background:#201712}
+.poster{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.event-strip{
+  background:#efb14c;
+  color:#2b1d13;
+  text-align:center;
+  padding:12px 18px;
+  font-weight:900;
+  font-size:clamp(17px,2vw,28px);
+  letter-spacing:.02em;
+  border-top:5px solid #19100b;
+  border-bottom:5px solid #19100b;
+}
+.content{
+  background:
+    linear-gradient(rgba(22,14,10,.78),rgba(22,14,10,.84)),
+    url("poster.png") center bottom/cover no-repeat;
+  padding:34px 22px 48px;
+}
+.panel{
+  max-width:980px;
+  margin:0 auto 28px;
+  background:rgba(255,245,223,.97);
+  border-radius:22px;
+  padding:26px;
+  box-shadow:0 18px 44px rgba(0,0,0,.38);
+  border:2px solid rgba(255,255,255,.4);
+}
+h2{
+  margin:0 0 6px;
+  color:#c12618;
+  font-family:Impact,"Arial Black",Arial,sans-serif;
+  letter-spacing:.02em;
+  font-size:clamp(30px,4vw,48px);
+}
+.sub{margin:0 0 20px;color:#665444;font-weight:700}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.full{grid-column:1/-1}
+label{display:block;font-weight:900;margin-bottom:7px}
+input,select,textarea{
+  width:100%;
+  border:1px solid #aeb7bf;
+  border-radius:8px;
+  background:#fff;
+  color:#17303a;
+  padding:13px 14px;
+  font:inherit;
+}
+input:focus,select:focus,textarea:focus{
+  outline:3px solid rgba(213,29,16,.18);
+  border-color:var(--red);
+}
+textarea{min-height:110px;resize:vertical}
+.radio-row{display:flex;gap:24px;align-items:center;padding-top:9px}
+.radio-row label{display:flex;align-items:center;gap:8px;margin:0;font-weight:800}
+.radio-row input{width:auto;transform:scale(1.15)}
+button{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:16px 18px;
+  background:linear-gradient(#e31c10,#c8130b);
+  color:#fff;
+  font-family:Impact,"Arial Black",Arial,sans-serif;
+  font-size:clamp(22px,3vw,34px);
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 5px 0 var(--red2);
+}
+button:disabled{opacity:.6;cursor:not-allowed}
+#status{text-align:center;font-weight:900;min-height:1.4em;margin-top:14px}
+.attendee-head{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-bottom:18px}
+.count{
+  background:var(--green);color:#fff;border-radius:999px;
+  padding:9px 14px;font-weight:900;white-space:nowrap;
+}
+#attendeeList{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.person{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:11px 12px;
+  font-weight:850;
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+}
+.small{font-size:.92rem;color:#6e5a49}
+footer{
+  color:#fff;
+  text-align:center;
+  padding:0 18px 34px;
+  font-weight:900;
+}
+@media(max-width:720px){
+  .content{padding:20px 12px 34px}
+  .panel{padding:19px}
+  .grid,#attendeeList{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  .attendee-head{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="poster" src="poster.png" alt="WH3 Hashgiving & Beer Mile Extravaganza poster">
+  <div class="event-strip">SATURDAY • OCTOBER 10, 2026 • 3:00 PM</div>
+
+  <main class="content">
+    <section class="panel">
+      <h2>Sign Up</h2>
+      <p class="sub">We need a head count so we know how much food and booze to buy.</p>
+
+      <form id="rsvpForm" name="wh3-hashgiving-rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="wh3-hashgiving-rsvp">
+        <p style="display:none"><label>Leave blank <input name="bot-field"></label></p>
+
+        <div class="grid">
+          <div>
+            <label for="hashName">Hash Name *</label>
+            <input id="hashName" name="hash_name" type="text" autocomplete="nickname" required>
+          </div>
+
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div>
+            <label for="total">Total number attending *</label>
+            <select id="total" name="total_attending" required>
+              <option value="1">1 — Just me</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6+</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Participating in the beer mile? *</label>
+            <div class="radio-row">
+              <label><input type="radio" name="beer_mile" value="running" required> Yes</label>
+              <label><input type="radio" name="beer_mile" value="spectating" required checked> No</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="beerMilers">Number of beer mile participants</label>
+            <select id="beerMilers" name="beer_milers">
+              <option value="0">0</option><option value="1">1</option><option value="2">2</option>
+              <option value="3">3</option><option value="4">4</option><option value="5">5</option>
+              <option value="6">6+</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label for="notes">Other notes (optional)</label>
+            <textarea id="notes" name="notes"></textarea>
+          </div>
+
+          <div class="full">
+            <button id="submitBtn" type="submit">SIGN ME UP!</button>
+            <div id="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="attendee-head">
+        <div>
+          <h2>Who's Coming?</h2>
+          <div class="small">Only Hash names are displayed publicly.</div>
+        </div>
+        <div class="count" id="headcount">0 attending</div>
+      </div>
+      <div id="attendeeList"><div class="small">Loading the kennel...</div></div>
+    </section>
+  </main>
+
+  <footer>👣 ON ON! • WINNIPEG HASH HOUSE HARRIERS • WH3 👣</footer>
+</div>
+
+<script>
+const form = document.getElementById('rsvpForm');
+const statusEl = document.getElementById('status');
+const submitBtn = document.getElementById('submitBtn');
+
+function esc(s=''){
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+}
+
+async function loadAttendees(){
+  const box = document.getElementById('attendeeList');
+  try{
+    const r = await fetch('/.netlify/functions/attendees',{cache:'no-store'});
+    if(!r.ok) throw new Error();
+    const d = await r.json();
+    document.getElementById('headcount').textContent = `${d.headcount || 0} attending`;
+    if(!d.attendees || !d.attendees.length){
+      box.innerHTML = '<div class="small">Be the first hasher to sign up!</div>';
+      return;
+    }
+    box.innerHTML = d.attendees.map(a =>
+      `<div class="person"><span>${esc(a.hashName)}</span><span>${a.beerMile==='running'?'🍺🏃':'🍺'}</span></div>`
+    ).join('');
+  }catch(e){
+    box.innerHTML = '<div class="small">The attendee list is not connected yet.</div>';
+  }
+}
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  statusEl.textContent = 'Saving RSVP...';
+  const fd = new FormData(form);
+
+  try{
+    const formSave = fetch('/',{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams(fd).toString()
+    });
+
+    const attendeeSave = fetch('/.netlify/functions/register',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(Object.fromEntries(fd.entries()))
+    });
+
+    const [a,b] = await Promise.all([formSave, attendeeSave]);
+    if(!a.ok || !b.ok) throw new Error();
+
+    form.reset();
+    form.querySelector('input[name="beer_mile"][value="spectating"]').checked = true;
+    document.getElementById('beerMilers').value = '0';
+    statusEl.textContent = "YOU'RE IN! ON ON!";
+    await loadAttendees();
+  }catch(e){
+    statusEl.textContent = 'Could not save RSVP. Please try again.';
+  }finally{
+    submitBtn.disabled = false;
+  }
+});
+
+loadAttendees();
+</script>
+</body>
+</html>
